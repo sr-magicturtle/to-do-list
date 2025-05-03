@@ -4,6 +4,13 @@ body {
 	display: flex;
 	justify-content: center;
 	margin-top: 50px;
+
+/* new background image */
+	background-image: url("images/photo_3_2025-05-03_15-55-55.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 .container {
