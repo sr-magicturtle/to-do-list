@@ -6,9 +6,11 @@ body {
 	margin-top: 50px;
 
 /* new background image */
-	background-image: url("images/photo_3_2025-05-03_15-55-55.jpg");
-	background-size: cover;
-	background-position: center;
+	/* background-image: url("images/photo_3_2025-05-03_15-55-55.jpg"), 
+		url("images/photo_2_2025-05-03_15-55-55.jpg"); */
+	background-image: url("images/photo_5_2025-05-03_16-55-51.jpg");
+	background-size: 140%;
+	background-position: 50% 44%;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
