@@ -9,12 +9,16 @@
 	<div class="container">
 		<h1>My To-Do List</h1>
 		
-		<img src="images/photo_1_2025-05-03_15-55-55.jpg" alt="pic1" width="300">
+		<img src="images/photo_1_2025-05-03_15-55-55.jpg" alt="pic1" class="container-pic">
 
-		<input type="text" id="taskInput" placeholder="Add a new task!">
-		<button onclick="addTask()">Add</button>
+        <div class="input-group">
+		    <input type="text" id="taskInput" placeholder="Add a new task!">
+		    <button onclick="addTask()">
+                Add
+            </button>
+        </div>
 		<ul id="taskList"></ul>
 	</div>
-	<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

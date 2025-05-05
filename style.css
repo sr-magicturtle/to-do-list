@@ -1,3 +1,4 @@
+/* styles the whole webpage */
 body {
 	font-family: Arial;
 	background-color: #f0f0f0;
@@ -5,9 +6,6 @@ body {
 	justify-content: center;
 	margin-top: 50px;
 
-/* new background image */
-	/* background-image: url("images/photo_3_2025-05-03_15-55-55.jpg"), 
-		url("images/photo_2_2025-05-03_15-55-55.jpg"); */
 	background-image: url("images/photo_5_2025-05-03_16-55-51.jpg");
 	background-size: 140%;
 	background-position: 50% 44%;
@@ -15,32 +13,64 @@ body {
 	background-attachment: fixed;
 }
 
+/* the white to-do list */
 .container {
 	background: white;
 	padding: 20px;
 	border-radius: 10px;
-	width: 300px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	width: 350px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-input {
-	width: 200px;
-	padding 8px;
+.container-pic {
+    max-width: 100%;
+    border-radius: 8px;
 }
 
+/* styles the text box */
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-group input {
+	width: 230px;
+	padding: 8px;
+}
+
+.input-group button {
+    padding: 8px;
+}
+
+/* applies to all buttons: Add and deleteButton */
 button {
 	padding: 8px;
 }
 
+/* styles each task */
 li {
 	margin-top: 10px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center; 
+    gap: 10px;
+    align-items: center;
 }
 
 .completed {
 	text-decoration: line-through;
 	color: grey;
+}
+
+.task-text {
+    flex: 1;
+}
+
+/* set custom height and width of checkbox */
+.task-checkbox {
+    width: 16px;
+    height: 16px;
 }
 
 

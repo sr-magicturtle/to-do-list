@@ -5,16 +5,26 @@ function addTask() {
 	const taskText = input.value.trim();
 	if (taskText == "") return;
 
-	const taskList = document.getElementById("taskList");
-
 	const li = document.createElement("li");
-	li.textContent = taskText;
 
-	li.addEventListener("click", () => {
-		li.classList.toggle("completed");
-		saveTasks();
-	});
+    // create checkbox on left 
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = false;
+    checkbox.className = "task-checkbox";
 
+    // label for task text 
+    const span = document.createElement("span");
+    span.textContent = taskText;
+    span.className = "task-text";
+
+    // toggle completed 
+    checkbox.addEventListener("change", () => {
+        span.classList.toggle("completed", checkbox.checked);
+        saveTasks();
+    });
+
+    // delete button 
 	const deleteButton = document.createElement("button");
 	deleteButton.textContent = "❌";
 	deleteButton.onclick = () => {
@@ -22,8 +32,11 @@ function addTask() {
 		saveTasks();
 	};
 
-	li.appendChild(deleteButton);
-	taskList.appendChild(li);
+    // put the task tgt 
+	li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(deleteButton);
+	document.getElementById("taskList").appendChild(li);
 	input.value = "";
 	saveTasks();
 }
@@ -31,23 +44,31 @@ function addTask() {
 function saveTasks() {
 	const tasks = [];
 	document.querySelectorAll("#taskList li").forEach(li => {
-		tasks.push({
-			text: li.firstChild.textContent,
-			done: li.classList.contains("completed")
-		});
+		const text = li.querySelector("span").textContent;
+		const done = li.querySelector("input[type=checkbox]").checked;
+        tasks.push({ text,done });
 	});
-	localstorage.setItem("tasks", JSON.stringify(tasks));
+	localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function loadTasks() {
 	const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 	tasks.forEach(task => {
 		const li = document.createElement("li");
-		li.textContent = task.text;
-		if (task.done) li.classList.add("completed");
 
-		li.addEventListener("click", () => {
-			li.classList.toggle("completed");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.done;
+        checkbox.className = "task-checkbox";
+
+        const span = document.createElement("span");
+        span.textContent = task.text;
+        span.className = "task-text";
+        if (task.done) span.classList.add("completed");
+
+
+		checkbox.addEventListener("change", () => {
+			span.classList.toggle("completed", checkbox.checked);
 			saveTasks();
 		});
 
@@ -58,7 +79,9 @@ function loadTasks() {
 			saveTasks();
 		};
 
-		li.appendChild(deleteButton);
+		li.appendChild(checkbox);
+        li.appendChild(span);
+        li.appendChild(deleteButton);
 		document.getElementById("taskList").appendChild(li);
 	});
 }
