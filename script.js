@@ -1,4 +1,13 @@
-document.addEventListener("DOMContentLoaded", loadTasks);
+document.addEventListener("DOMContentLoaded", () => {
+    loadTasks();
+
+    const input = document.getElementById("taskInput");
+    input.addEventListener("keydown", (event) => {
+        if (event.key == "Enter") {
+            addTask();
+        }
+    });
+});
 
 function addTask() {
 	const input = document.getElementById("taskInput");
